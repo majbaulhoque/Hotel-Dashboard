@@ -1,9 +1,10 @@
-import React from 'react';
+
+import PropertyForm from '../Component/PropertyForm';
 
 const Dashboard = () => {
     return (
         <div>
-            
+            <PropertyForm />
         </div>
     );
 };
