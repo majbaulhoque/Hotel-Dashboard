@@ -18,6 +18,14 @@ const PropertyData = () => {
             price: 25000,
             addedDate: "2024-11-15",
         },
+        {
+            propertyId: "PROP-3",
+            propertyName: "Chittagong Hills",
+            propertyType: "Commercial",
+            location: "Sylhet",
+            price: 25000,
+            addedDate: "2024-11-15",
+        },
     ]);
 
     useEffect(() => {

@@ -6,7 +6,7 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 
 const Navbar = () => {
     return (
-        <div className='flex justify-between items-center py-3 px-8 border-b-2'>
+        <div className='flex justify-between items-center py-3 px-8 border-b-2 shadow'>
             <div>
                 <Logo />
             </div>
