@@ -28,7 +28,7 @@ const PropertyData = () => {
             addedDate: "2024-11-15",
         },
     ]);
-    const [filteredType, setFilteredType] = useState(""); // State for selected property type
+    const [filteredType, setFilteredType] = useState("");
 
     useEffect(() => {
         // Fetch stored properties from localStorage
@@ -38,7 +38,7 @@ const PropertyData = () => {
         }
     }, []);
 
-    // Filter properties based on the selected type
+    // Filter properties
     const filteredProperties = filteredType
         ? properties.filter(property => property.propertyType === filteredType)
         : properties;
@@ -51,7 +51,7 @@ const PropertyData = () => {
                     <label className="block text-sm font-medium mb-1">Filter by Property Type</label>
                     <select
                         value={filteredType}
-                        onChange={(e) => setFilteredType(e.target.value)} // Update the filter state
+                        onChange={(e) => setFilteredType(e.target.value)} // Update filter state
                         className="border border-gray-300 rounded px-3 py-2"
                     >
                         <option value="">All</option>
