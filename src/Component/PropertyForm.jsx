@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PropertyForm = () => {
     const [formData, setFormData] = useState({
@@ -48,7 +50,8 @@ const PropertyForm = () => {
         const propertyId = `PROP-${Date.now()}`;
         const storedProperties = JSON.parse(localStorage.getItem("properties")) || [];
         localStorage.setItem("properties", JSON.stringify([...storedProperties, { ...formData, propertyId }]));
-        alert("Property added successfully!");
+        
+        toast.success("Property added successfully! \n Reload Your page... ");
 
         // Reset form
         setFormData({
@@ -137,6 +140,8 @@ const PropertyForm = () => {
                     Add Property
                 </button>
             </form>
+            {/* Toast Container to show notifications */}
+            <ToastContainer />
         </div>
     );
 };

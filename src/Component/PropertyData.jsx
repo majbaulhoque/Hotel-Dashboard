@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const PropertyData = () => {
-    // Fake Data
     const [properties, setProperties] = useState([
         {
             propertyId: "PROP-1",
@@ -31,14 +30,14 @@ const PropertyData = () => {
     const [filteredType, setFilteredType] = useState("");
 
     useEffect(() => {
-        // Fetch stored properties from localStorage
+        // Fetch properties
         const storedProperties = JSON.parse(localStorage.getItem("properties")) || [];
         if (storedProperties.length > 0) {
             setProperties(storedProperties);
         }
     }, []);
 
-    // Filter properties
+    // Filter properties 
     const filteredProperties = filteredType
         ? properties.filter(property => property.propertyType === filteredType)
         : properties;
@@ -51,7 +50,7 @@ const PropertyData = () => {
                     <label className="block text-sm font-medium mb-1">Filter by Property Type</label>
                     <select
                         value={filteredType}
-                        onChange={(e) => setFilteredType(e.target.value)} // Update filter state
+                        onChange={(e) => setFilteredType(e.target.value)} // Update the filter state
                         className="border border-gray-300 rounded px-3 py-2"
                     >
                         <option value="">All</option>
