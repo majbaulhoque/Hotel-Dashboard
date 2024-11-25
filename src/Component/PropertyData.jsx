@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const PropertyData = () => {
+    // Fake Data
     const [properties, setProperties] = useState([
         {
             propertyId: "PROP-1",

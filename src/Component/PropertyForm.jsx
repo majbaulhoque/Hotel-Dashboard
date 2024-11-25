@@ -18,7 +18,7 @@ const PropertyForm = () => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
 
-        // Validate check-outs in real-time
+        // Check out validation
         if (name === "checkOuts" && formData.checkIns && Number(value) < Number(formData.checkIns)) {
             setErrors({ ...errors, checkOuts: "Check-Outs must be after Check-Ins." });
         } else {

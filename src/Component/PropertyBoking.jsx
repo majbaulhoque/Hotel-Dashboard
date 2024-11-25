@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaBuilding, FaHome, FaCity } from "react-icons/fa"; // Importing icons from react-icons
+import { FaBuilding, FaHome, FaCity } from "react-icons/fa"; 
 
 const PropertyBooking = () => {
     const [properties, setProperties] = useState({
@@ -10,10 +10,10 @@ const PropertyBooking = () => {
     });
 
     useEffect(() => {
-        // Fetch stored properties from localStorage
+        // Fetch properties from localStorage
         const storedProperties = JSON.parse(localStorage.getItem("properties")) || [];
 
-        // Categorize properties by type
+        // Property Category 
         const apartments = storedProperties.filter(property => property.propertyType === "Apartment");
         const houses = storedProperties.filter(property => property.propertyType === "House");
         const commercials = storedProperties.filter(property => property.propertyType === "Commercial");
@@ -26,7 +26,7 @@ const PropertyBooking = () => {
         });
     }, []);
 
-    // Sum the total price of all properties
+    // Total sum
     const totalPrice = properties.all.reduce((sum, property) => sum + Number(property.price), 0);
     const apartmentPrice = properties.apartments.reduce((sum, property) => sum + Number(property.price), 0);
     const housePrice = properties.houses.reduce((sum, property) => sum + Number(property.price), 0);
@@ -41,7 +41,7 @@ const PropertyBooking = () => {
                     <h3 className="text-xl font-bold text-blue-600 flex items-center">
                         <FaBuilding className="mr-2 text-xl" /> Total Price
                     </h3>
-                    <p className="text-2xl text-gray-700">${totalPrice}</p>
+                    <p className="text-2xl text-gray-700 my-6">{totalPrice}<span className=" text-black font-bold "> Taka</span></p>
                 </div>
 
                 {/* Apartment Card */}
@@ -49,7 +49,7 @@ const PropertyBooking = () => {
                     <h3 className="text-xl font-bold text-green-600 flex items-center">
                         <FaHome className="mr-2 text-xl" /> Apartments
                     </h3>
-                    <p className="text-2xl text-gray-700">${apartmentPrice}</p>
+                    <p className="text-2xl text-gray-700 my-6">{apartmentPrice}<span className="font-bold text-black"> Taka</span> </p>
                     <p className="text-sm text-gray-500">Total: {properties.apartments.length} Apartments</p>
                 </div>
 
@@ -58,7 +58,7 @@ const PropertyBooking = () => {
                     <h3 className="text-xl font-bold text-yellow-600 flex items-center">
                         <FaHome className="mr-2 text-xl" /> Houses
                     </h3>
-                    <p className="text-2xl text-gray-700">${housePrice}</p>
+                    <p className="text-2xl text-gray-700 my-6">{housePrice}<span className="text-black font-bold "> Taka</span></p>
                     <p className="text-sm text-gray-500">Total: {properties.houses.length} Houses</p>
                 </div>
 
@@ -67,7 +67,7 @@ const PropertyBooking = () => {
                     <h3 className="text-xl font-bold text-red-600 flex items-center">
                         <FaCity className="mr-2 text-xl" /> Commercial
                     </h3>
-                    <p className="text-2xl text-gray-700">${commercialPrice}</p>
+                    <p className="text-2xl text-gray-700 my-6">{commercialPrice}<span className="font-bold text-black"> Taka</span></p>
                     <p className="text-sm text-gray-500">Total: {properties.commercials.length} Commercials</p>
                 </div>
             </div>

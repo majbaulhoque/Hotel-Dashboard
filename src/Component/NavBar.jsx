@@ -42,7 +42,7 @@ const Navbar = () => {
                 <IoPersonCircleSharp className="text-3xl sm:text-4xl text-green-600 cursor-pointer" />
             </div>
 
-            {/* Mobile Menu Button (Optional) */}
+            {/* Optional just using icon for mobile device */}
             <div className="block sm:hidden">
                 <button className="text-green-600 text-2xl">☰</button>
             </div>
