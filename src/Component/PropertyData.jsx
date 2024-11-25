@@ -27,6 +27,7 @@ const PropertyData = () => {
             addedDate: "2024-11-15",
         },
     ]);
+    const [filteredType, setFilteredType] = useState(""); // State for selected property type
 
     useEffect(() => {
         // Fetch stored properties from localStorage
@@ -36,12 +37,30 @@ const PropertyData = () => {
         }
     }, []);
 
+    // Filter properties based on the selected type
+    const filteredProperties = filteredType
+        ? properties.filter(property => property.propertyType === filteredType)
+        : properties;
+
     return (
         <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-            <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">
-                Property List
-            </h2>
-            {properties.length > 0 ? (
+            <div className="flex justify-between items-center mb-6">
+                <h2 className="text-3xl font-bold text-blue-600">Property List</h2>
+                <div>
+                    <label className="block text-sm font-medium mb-1">Filter by Property Type</label>
+                    <select
+                        value={filteredType}
+                        onChange={(e) => setFilteredType(e.target.value)} // Update the filter state
+                        className="border border-gray-300 rounded px-3 py-2"
+                    >
+                        <option value="">All</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="House">House</option>
+                        <option value="Commercial">Commercial</option>
+                    </select>
+                </div>
+            </div>
+            {filteredProperties.length > 0 ? (
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-gray-200">
                         <thead className="bg-blue-500 text-white">
@@ -55,7 +74,7 @@ const PropertyData = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {properties.map((property, index) => (
+                            {filteredProperties.map((property, index) => (
                                 <tr key={property.propertyId} className="hover:bg-gray-100 text-center">
                                     <td className="border border-gray-300 px-4 py-2 text-center">
                                         {index + 1}
